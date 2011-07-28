@@ -11,13 +11,18 @@ struct LinkList {
 
 /// create link list with head
 void linklist_create(struct LinkList **L);
+/// destory all nodes include head node
 void linklist_destory(struct LinkList **L);
+/// destory all nodes but head node, -1 returns if NULL list
+Int32 linklist_clear(struct LinkList **L);
 /// get link list length without head node
 Int32 linklist_length(struct LinkList *L);
 
 struct LinkList* linklist_get_pos_node(struct LinkList *L, Int32 pos);
 Int32 linklist_insert_elem(struct LinkList **L, Int32 pos, LinkElement e);
 Int32 linklist_remove(struct LinkList **L, Int32 pos);
+
+Int32 linklist_join(struct LinkList **dest, struct LinkList **src, Int32 pos);
 
 void linklist_traverse(struct LinkList *L,Int32 (*f)(struct LinkList*));
 Int32 linklist_show_node(struct LinkList *L);

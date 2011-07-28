@@ -16,6 +16,15 @@ void linklist_destory(struct LinkList **L) {
 	(*L) = NULL;
 }
 
+Int32 linklist_clear(struct LinkList **L) {
+	if (!*L)
+		return -1;
+	struct LinkList *p = (*L)->next;
+	(*L)->next = NULL;
+	linklist_destory(&p);
+	return 1;
+}
+
 Int32 linklist_length(struct LinkList *L) {
 	Int32 length = 0;
 	if (!L) {
@@ -84,7 +93,7 @@ Int32 linklist_remove(struct LinkList **L, Int32 pos) {
 	if (pos == 0)
 		p = (*L);
 	else
-		p = linklist_get_pos_node(*L,pos - 1 < 0? 0:pos - 1);
+		p = linklist_get_pos_node(*L,pos - 1);
 	if (!p)
 		return -1;
 	q = p->next;
@@ -93,5 +102,25 @@ Int32 linklist_remove(struct LinkList **L, Int32 pos) {
 	p->next = q->next;
 	free(q);
 
+	return 1;
+}
+
+Int32 linklist_join(struct LinkList **dest, struct LinkList **src, Int32 pos) {
+	if (!(*dest) || !(*src) || !(*src)->next || pos < 0)
+		return -1;
+	struct LinkList *prev;
+	struct LinkList *src_peeled = (*src)->next, *src_last;
+	if (pos == 0)
+		prev = (*dest);
+	else
+		prev = linklist_get_pos_node(*dest, pos - 1);
+	if (!prev)
+		return -1;
+	Int32 src_length = linklist_length(*src);
+	src_last = linklist_get_pos_node(*src, src_length - 1);
+	if (!src_last)
+		return -1;
+	src_last->next = prev->next;
+	prev->next = src_peeled;
 	return 1;
 }
