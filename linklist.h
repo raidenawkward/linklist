@@ -19,6 +19,8 @@ Int32 linklist_clear(struct LinkList **L);
 Int32 linklist_length(struct LinkList *L);
 /// append element to tail of link list
 Int32 linklist_append_elem(struct LinkList **L, LinkElement e);
+/// get value of link list on pos, ERROR returns if failed
+Int32 linklist_get_pos_elem(struct LinkList *L, int pos, LinkElement *e);
 /// get link list node on pos, NULL if failed
 struct LinkList* linklist_get_pos_node(struct LinkList *L, Int32 pos);
 /// get the last node in list
@@ -34,6 +36,7 @@ Int32 linklist_join(struct LinkList **dest, struct LinkList **src, Int32 pos);
 Int32 linklist_insert_node(struct LinkList **L, struct LinkList *node, Int32 pos);
 
 /// traverse in link list in sequence
+// traverse stops immediately if f returns less than 0
 void linklist_traverse(struct LinkList *L,Int32 (*f)(struct LinkList*));
 /// print link list node data as char
 Int32 linklist_show_node(struct LinkList *L);

@@ -3,6 +3,8 @@
 
 void linklist_create(struct LinkList **L) {
 	*L = (struct LinkList*)malloc(sizeof(struct LinkList));
+	if (!(*L))
+		return;
 	(*L)->next = NULL;
 	(*L)->data = 0x00;
 }
@@ -44,13 +46,22 @@ void linklist_traverse(struct LinkList *L,Int32 (*f)(struct LinkList*)) {
 		return;
 	while (p->next) {
 		p = p->next;
-		f(p);
+		if (f(p) < 0)
+			return;
 	}
 }
 
 Int32 linklist_show_node(struct LinkList *L) {
 	printf("%c\n",L->data);
 	return 0;
+}
+
+Int32 linklist_get_pos_elem(struct LinkList *L, int pos, LinkElement *e) {
+	struct LinkList *node = linklist_get_pos_node(L,pos);
+	if (!node)
+		return ERROR;
+	*e = node->data;
+	return SUCCEED;
 }
 
 struct LinkList* linklist_get_pos_node(struct LinkList *L, Int32 pos) {
@@ -89,6 +100,8 @@ Int32 linklist_insert_elem(struct LinkList **L, Int32 pos, LinkElement e) {
 		return ERROR;
 
 	struct LinkList *new = (struct LinkList*)malloc(sizeof(struct LinkList));
+	if (!new)
+		return ERROR;
 	new->data = e;
 	new->next = p->next;
 	p->next = new;

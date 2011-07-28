@@ -21,5 +21,6 @@ int main(int argc, char** argv) {
 	linklist_insert_node(&L,L1->next,1);
 
 	linklist_traverse(L,linklist_show_node);
+
 	return 0;
 }
