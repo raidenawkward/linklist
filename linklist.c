@@ -1,4 +1,5 @@
 #include "linklist.h"
+#include "operation.h"
 #include <stdio.h>
 
 void linklist_create(struct LinkList **L) {
