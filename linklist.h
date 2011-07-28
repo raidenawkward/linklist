@@ -13,13 +13,13 @@ struct LinkList {
 void linklist_create(struct LinkList **L);
 void linklist_destory(struct LinkList **L);
 /// get link list length without head node
-int linklist_length(struct LinkList *L);
+Int32 linklist_length(struct LinkList *L);
 
-struct LinkList* linklist_get_pos_node(struct LinkList *L, int pos);
-int linklist_insert_elem(struct LinkList **L, int pos, LinkElement e);
-int linklist_remove(struct LinkList **L, int pos);
+struct LinkList* linklist_get_pos_node(struct LinkList *L, Int32 pos);
+Int32 linklist_insert_elem(struct LinkList **L, Int32 pos, LinkElement e);
+Int32 linklist_remove(struct LinkList **L, Int32 pos);
 
-void linklist_traverse(struct LinkList *L,int (*f)(struct LinkList*));
-int linklist_show_node(struct LinkList *L);
+void linklist_traverse(struct LinkList *L,Int32 (*f)(struct LinkList*));
+Int32 linklist_show_node(struct LinkList *L);
 
 #endif //_LINKLIST_H

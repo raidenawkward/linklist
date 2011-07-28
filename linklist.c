@@ -8,18 +8,16 @@ void linklist_create(struct LinkList **L) {
 }
 
 void linklist_destory(struct LinkList **L) {
-	if (*L && (*L)->next) {
+	if (!(*L))
+		return;
+	if ((*L)->next)
 		linklist_destory(&(*L)->next);
-		free(*L);
-	} else {
-		if (*L) {
-			free(*L);
-		}
-	}
+	free((*L));
+	(*L) = NULL;
 }
 
-int linklist_length(struct LinkList *L) {
-	int length = 0;
+Int32 linklist_length(struct LinkList *L) {
+	Int32 length = 0;
 	if (!L) {
 		return length;
 	}
@@ -31,7 +29,7 @@ int linklist_length(struct LinkList *L) {
 	return length;
 }
 
-void linklist_traverse(struct LinkList *L,int (*f)(struct LinkList*)) {
+void linklist_traverse(struct LinkList *L,Int32 (*f)(struct LinkList*)) {
 	struct LinkList *p = L;
 	if (!f)
 		return;
@@ -41,16 +39,16 @@ void linklist_traverse(struct LinkList *L,int (*f)(struct LinkList*)) {
 	}
 }
 
-int linklist_show_node(struct LinkList *L) {
+Int32 linklist_show_node(struct LinkList *L) {
 	printf("%c\n",L->data);
 	return 0;
 }
 
-struct LinkList* linklist_get_pos_node(struct LinkList *L, int pos) {
+struct LinkList* linklist_get_pos_node(struct LinkList *L, Int32 pos) {
 	if (pos < 0)
 		return NULL;
 	struct LinkList *p = L;
-	int i = 0;
+	Int32 i = 0;
 	for (; i <= pos; ++i) {
 		if (!p->next) {
 			return NULL;
@@ -61,7 +59,7 @@ struct LinkList* linklist_get_pos_node(struct LinkList *L, int pos) {
 	return p;
 }
 
-int linklist_insert_elem(struct LinkList **L, int pos, LinkElement e) {
+Int32 linklist_insert_elem(struct LinkList **L, Int32 pos, LinkElement e) {
 	if (pos < 0)
 		return -1;
 	struct LinkList *p;
@@ -77,7 +75,7 @@ int linklist_insert_elem(struct LinkList **L, int pos, LinkElement e) {
 	return 1;
 }
 
-int linklist_remove(struct LinkList **L, int pos) {
+Int32 linklist_remove(struct LinkList **L, Int32 pos) {
 	if (pos < 0)
 		return -1;
 	struct LinkList *p, *q;
