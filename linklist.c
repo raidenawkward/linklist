@@ -18,11 +18,11 @@ void linklist_destory(struct LinkList **L) {
 
 Int32 linklist_clear(struct LinkList **L) {
 	if (!*L)
-		return -1;
+		return ERROR;
 	struct LinkList *p = (*L)->next;
 	(*L)->next = NULL;
 	linklist_destory(&p);
-	return 1;
+	return SUCCEED;
 }
 
 Int32 linklist_length(struct LinkList *L) {
@@ -68,25 +68,37 @@ struct LinkList* linklist_get_pos_node(struct LinkList *L, Int32 pos) {
 	return p;
 }
 
+struct LinkList* linklist_get_last_node(struct LinkList *L) {
+	if (!L)
+		return NULL;
+	struct LinkList *last = L;
+	while (last->next) {
+		last = last->next;
+		if (!last->next)
+			return last;
+	}
+	return last;
+}
+
 Int32 linklist_insert_elem(struct LinkList **L, Int32 pos, LinkElement e) {
 	if (pos < 0)
-		return -1;
+		return ERROR;
 	struct LinkList *p;
 	p = pos > 0? linklist_get_pos_node(*L,pos - 1 < 0? 0:pos - 1) : *L;
 	if (!p)
-		return -1;
+		return ERROR;
 
 	struct LinkList *new = (struct LinkList*)malloc(sizeof(struct LinkList));
 	new->data = e;
 	new->next = p->next;
 	p->next = new;
 
-	return 1;
+	return SUCCEED;
 }
 
 Int32 linklist_remove(struct LinkList **L, Int32 pos) {
 	if (pos < 0)
-		return -1;
+		return ERROR;
 	struct LinkList *p, *q;
 
 	// get prev node
@@ -95,19 +107,25 @@ Int32 linklist_remove(struct LinkList **L, Int32 pos) {
 	else
 		p = linklist_get_pos_node(*L,pos - 1);
 	if (!p)
-		return -1;
+		return ERROR;
 	q = p->next;
 	if (!q)
-		return -1;
+		return ERROR;
 	p->next = q->next;
 	free(q);
 
-	return 1;
+	return SUCCEED;
+}
+
+Int32 linklist_append_elem(struct LinkList **L, LinkElement e) {
+	if (!*L)
+		return ERROR;
+	return linklist_insert_elem(L, linklist_length(*L), e);
 }
 
 Int32 linklist_join(struct LinkList **dest, struct LinkList **src, Int32 pos) {
 	if (!(*dest) || !(*src) || !(*src)->next || pos < 0)
-		return -1;
+		return ERROR;
 	struct LinkList *prev;
 	struct LinkList *src_peeled = (*src)->next, *src_last;
 	if (pos == 0)
@@ -115,12 +133,29 @@ Int32 linklist_join(struct LinkList **dest, struct LinkList **src, Int32 pos) {
 	else
 		prev = linklist_get_pos_node(*dest, pos - 1);
 	if (!prev)
-		return -1;
+		return ERROR;
 	Int32 src_length = linklist_length(*src);
 	src_last = linklist_get_pos_node(*src, src_length - 1);
 	if (!src_last)
-		return -1;
+		return ERROR;
 	src_last->next = prev->next;
 	prev->next = src_peeled;
-	return 1;
+	return SUCCEED;
+}
+
+Int32 linklist_insert_node(struct LinkList **L, struct LinkList *node, Int32 pos) {
+	if (!(*L) || !node)
+		return ERROR;
+
+	struct LinkList *last = linklist_get_last_node(node);
+	struct LinkList *prev;
+	if (pos == 0)
+		prev = *L;
+	else
+		prev = linklist_get_pos_node(*L,pos - 1);
+	if (!prev)
+		return ERROR;
+	last->next = prev->next;
+	prev->next = node;
+	return SUCCEED;
 }
