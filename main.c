@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 	linklist_op_extern->reverse(&L);
 
 	printf("after reverse :\n");
-	//linklist_op->traverse(L,linklist_op->show_node);
+	linklist_op->traverse(L,linklist_op->show_node);
 
 	return 0;
 }
