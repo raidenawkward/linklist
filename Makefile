@@ -1,4 +1,4 @@
-OBJS := main.o linklist.o
+OBJS := main.o operation.o base.o
 
 EXEC := a
 
