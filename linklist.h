@@ -10,6 +10,7 @@ struct LinkList {
 
 /// operations for link list with head node
 struct LinkListOperation {
+	/// base operations
 	void (*create)(struct LinkList **L);
 	void (*destory)(struct LinkList **L);
 	Int32 (*clear)(struct LinkList **L);
@@ -24,6 +25,11 @@ struct LinkListOperation {
 	Int32 (*insert_node)(struct LinkList **L, struct LinkList *node, Int32 pos);
 	void (*traverse)(struct LinkList *L,Int32 (*f)(struct LinkList*));
 	Int32 (*show_node)(struct LinkList *L);
+};
+
+struct LinkListOperation_Extern {
+	/// external operations
+	Int32 (*reverse)(struct LinkList **L);
 };
 
 #endif // _LINKLIST_H

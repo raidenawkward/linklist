@@ -5,10 +5,14 @@
 #include "operation.h"
 
 static struct LinkListOperation *linklist_op;
+static struct LinkListOperation_Extern *linklist_op_extern;
 
 int main(int argc, char** argv) {
 	linklist_op = linklist_get_operation();
+	linklist_op_extern = linklist_get_operation_extern();
 	if (!linklist_op)
+		return 1;
+	if (!linklist_op_extern)
 		return 1;
 
 	struct LinkList *L,*L1;
@@ -18,15 +22,15 @@ int main(int argc, char** argv) {
 	linklist_op->append_elem(&L,'a');
 	linklist_op->append_elem(&L,'b');
 	linklist_op->append_elem(&L,'c');
+	linklist_op->append_elem(&L,'d');
+	linklist_op->append_elem(&L,'e');
 
-	linklist_op->append_elem(&L1,'1');
-	linklist_op->append_elem(&L1,'2');
-	linklist_op->append_elem(&L1,'3');
-
-	//linklist_op->join(&L,&L1,1);
-	linklist_op->insert_node(&L,L1->next,1);
-
+	printf("before reverse :\n");
 	linklist_op->traverse(L,linklist_op->show_node);
+	linklist_op_extern->reverse(&L);
+
+	printf("after reverse :\n");
+	//linklist_op->traverse(L,linklist_op->show_node);
 
 	return 0;
 }
