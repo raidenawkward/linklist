@@ -2,18 +2,19 @@
 #include <stdio.h>
 
 /// method 1
-static struct LinkList* prev = NULL;
-static struct LinkList* list_reverse(struct LinkList **L) {
+// returns head of link list after reverse
+static struct LinkList* _list_reverse_prev = NULL;
+static struct LinkList* _list_reverse(struct LinkList **L) {
 	if (!*L)
 		return NULL;
 	struct LinkList *next = (*L)->next;
-	(*L)->next = prev;
-	prev = (*L);
+	(*L)->next = _list_reverse_prev;
+	_list_reverse_prev = (*L);
 	if (next) {
-		return list_reverse(&next);
+		return _list_reverse(&next);
 	}
 	else {
-		prev = NULL;
+		_list_reverse_prev = NULL;
 		return (*L);
 	}
 }
@@ -22,6 +23,7 @@ Int32 linklist_reverse(struct LinkList **L) {
 	if (!(*L) || !(*L)->next)
 		return ERROR;
 	struct LinkList *list_peeled = (*L)->next;
-	(*L)->next = list_reverse(&list_peeled);
+	(*L)->next = _list_reverse(&list_peeled);
+	_list_reverse_prev = NULL;
 	return SUCCEED;
 }
