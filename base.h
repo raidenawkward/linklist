@@ -31,7 +31,7 @@ Int32 linklist_join(struct LinkList **dest, struct LinkList **src, Int32 pos);
 /// insert node or linked nodes to link list
 Int32 linklist_insert_node(struct LinkList **L, struct LinkList *node, Int32 pos);
 
-/// traverse in link list in sequence
+/// traverse in link list in sequence, NOT includes head node!
 // traverse stops immediately if f returns less than 0
 void linklist_traverse(struct LinkList *L,Int32 (*f)(struct LinkList*));
 /// print link list node data as char

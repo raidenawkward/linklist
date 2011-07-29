@@ -30,6 +30,8 @@ struct LinkListOperation {
 struct LinkListOperation_Extern {
 	/// external operations
 	Int32 (*reverse)(struct LinkList **L);
+	Int32 (*save)(struct LinkList *L, const char* path, struct LinkListOperation *baseop);
+	Int32 (*load)(struct LinkList **L, const char* path, struct LinkListOperation *baseop);
 };
 
 #endif // _LINKLIST_H

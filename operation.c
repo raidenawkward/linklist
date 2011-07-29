@@ -32,6 +32,8 @@ struct LinkListOperation_Extern* linklist_get_operation_extern() {
 		return NULL;
 
 	op->reverse = linklist_reverse;
+	op->save = linklist_save;
+	op->load = linklist_load;
 
 	return op;
 }
