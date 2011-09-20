@@ -1,10 +1,15 @@
-OBJS := main.o linklist_operation.o linklist_base.o linklist_extern.o
+SRC := $(shell ls ./*.c)
+OBJS = $(SRC:.c=.o)
 
-EXEC := a
+TAR_EXEC := a
+TAR_LIB := linklist.so
+TAR_ALIB := linklist.a
 
 CFLAGS += -g
 
 default:$(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
+	$(CC) $(CFLAGS) $(OBJS) -o $(TAR_EXEC)
+	$(CC) $(CFLAGS) $(OBJS) -shared -o $(TAR_LIB)
+	ar -r $(TAR_ALIB) $(OBJS)
 clean:
-	rm $(OBJS) $(EXEC)
+	rm $(OBJS) $(TAR_EXEC) $(TAR_LIB) $(TAR_ALIB)
