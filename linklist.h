@@ -1,7 +1,7 @@
 #ifndef _LINKLIST_H
 #define _LINKLIST_H
 
-#include "define.h"
+#include "linklist_define.h"
 
 struct LinkList {
     LinkElement data;
@@ -9,7 +9,7 @@ struct LinkList {
 };
 
 /// operations for link list with head node
-struct LinkListOperation {
+struct linklist_operation {
 	/// base operations
 	void (*create)(struct LinkList **L);
 	void (*destory)(struct LinkList **L);
@@ -27,11 +27,11 @@ struct LinkListOperation {
 	Int32 (*show_node)(struct LinkList *L);
 };
 
-struct LinkListOperation_Extern {
+struct linklist_operation_extern {
 	/// external operations
 	Int32 (*reverse)(struct LinkList **L);
-	Int32 (*save)(struct LinkList *L, const char* path, struct LinkListOperation *baseop);
-	Int32 (*load)(struct LinkList **L, const char* path, struct LinkListOperation *baseop);
+	Int32 (*save)(struct LinkList *L, const char* path, struct linklist_operation *baseop);
+	Int32 (*load)(struct LinkList **L, const char* path, struct linklist_operation *baseop);
 };
 
 #endif // _LINKLIST_H

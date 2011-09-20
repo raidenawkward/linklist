@@ -1,4 +1,4 @@
-#include "extern.h"
+#include "linklist_extern.h"
 #include <stdio.h>
 
 /// method 1
@@ -41,7 +41,7 @@ static struct LinkList* _linklist_load_node(FILE* fp) {
 
 }
 
-Int32 linklist_save(struct LinkList *L, const char* path, struct LinkListOperation *baseop) {
+Int32 linklist_save(struct LinkList *L, const char* path, struct linklist_operation *baseop) {
 	if (!baseop || !path || !L)
 		return ERROR;
 	if (!baseop->traverse)
@@ -56,6 +56,6 @@ Int32 linklist_save(struct LinkList *L, const char* path, struct LinkListOperati
 	return SUCCEED;
 }
 
-Int32 linklist_load(struct LinkList **L, const char* path, struct LinkListOperation *baseop) {
+Int32 linklist_load(struct LinkList **L, const char* path, struct linklist_operation *baseop) {
 
 }

@@ -1,9 +1,9 @@
-#include "operation.h"
-#include "base.h"
-#include "extern.h"
+#include "linklist_operation.h"
+#include "linklist_base.h"
+#include "linklist_extern.h"
 
-struct LinkListOperation* linklist_get_operation() {
-	struct LinkListOperation *op = (struct LinkListOperation*)malloc(sizeof(struct LinkListOperation));
+struct linklist_operation* linklist_get_operation() {
+	struct linklist_operation *op = (struct linklist_operation*)malloc(sizeof(struct linklist_operation));
 
 	if (!op)
 		return NULL;
@@ -26,8 +26,8 @@ struct LinkListOperation* linklist_get_operation() {
 	return op;
 }
 
-struct LinkListOperation_Extern* linklist_get_operation_extern() {
-	struct LinkListOperation_Extern *op = (struct LinkListOperation_Extern*)malloc(sizeof(struct LinkListOperation_Extern));
+struct linklist_operation_extern* linklist_get_operation_extern() {
+	struct linklist_operation_extern *op = (struct linklist_operation_extern*)malloc(sizeof(struct linklist_operation_extern));
 	if (!op)
 		return NULL;
 

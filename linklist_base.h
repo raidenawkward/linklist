@@ -1,8 +1,8 @@
-#ifndef _BASE_H
-#define _BASE_H
+#ifndef _LINKLIST_LINKLIST_BASE_H
+#define _LINKLIST_BASE_H
 
 #include <stdlib.h>
-#include "define.h"
+#include "linklist_define.h"
 #include "linklist.h"
 
 /// create link list with head node
@@ -37,4 +37,4 @@ void linklist_traverse(struct LinkList *L,Int32 (*f)(struct LinkList*));
 /// print link list node data as char
 Int32 linklist_show_node(struct LinkList *L);
 
-#endif //_BASE_H
+#endif //_LINKLIST_BASE_H

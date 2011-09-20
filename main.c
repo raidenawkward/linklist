@@ -2,10 +2,10 @@
 #include <stdio.h>
 
 #include "linklist.h"
-#include "operation.h"
+#include "linklist_operation.h"
 
-static struct LinkListOperation *linklist_op;
-static struct LinkListOperation_Extern *linklist_op_extern;
+static struct linklist_operation *linklist_op;
+static struct linklist_operation_extern *linklist_op_extern;
 
 int main(int argc, char** argv) {
 	linklist_op = linklist_get_operation();

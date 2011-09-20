@@ -1,5 +1,5 @@
-#ifndef _DEFINE_H
-#define _DEFINE_H
+#ifndef _LINKLIST_DEFINKE_H
+#define _LINKLIST_DEFINKE_H
 
 #define ERROR -1
 #define SUCCEED 1
@@ -12,5 +12,5 @@ typedef int Int32;
 
 typedef char LinkElement;
 
-#endif //_DEFINE_H
+#endif //_LINKLIST_DEFINKE_H
 
