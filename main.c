@@ -9,10 +9,7 @@ static struct linklist_operation_extern *linklist_op_extern;
 
 int main(int argc, char** argv) {
 	linklist_op = linklist_get_operation();
-	linklist_op_extern = linklist_get_operation_extern();
 	if (!linklist_op)
-		return 1;
-	if (!linklist_op_extern)
 		return 1;
 
 	struct LinkList *L,*L1;
@@ -27,18 +24,17 @@ int main(int argc, char** argv) {
 
 	printf("before reverse :\n");
 	linklist_op->traverse(L,linklist_op->show_node);
-	linklist_op_extern->reverse(&L);
+	linklist_op->reverse(&L);
 
 	printf("after reverse :\n");
 	linklist_op->traverse(L,linklist_op->show_node);
 	
-	linklist_op_extern->reverse(&L);
+	linklist_op->reverse(&L);
 	printf("after reverse again:\n");
 	linklist_op->traverse(L,linklist_op->show_node);
 
 	linklist_op->destory(&L);
 	linklist_op->destory(&L1);
 	free(linklist_op);
-	free(linklist_op_extern);
 	return 0;
 }

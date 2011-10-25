@@ -25,9 +25,6 @@ struct linklist_operation {
 	Boolean (*insert_node)(struct LinkList **L, struct LinkList *node, Int32 pos);
 	void (*traverse)(struct LinkList *L,Int32 (*f)(struct LinkList*));
 	Int32 (*show_node)(struct LinkList *L);
-};
-
-struct linklist_operation_extern {
 	/// external operations
 	Int32 (*reverse)(struct LinkList **L);
 	Int32 (*save)(struct LinkList *L, const char* path, struct linklist_operation *baseop);

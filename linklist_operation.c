@@ -23,17 +23,10 @@ struct linklist_operation* linklist_get_operation() {
 	op->traverse = linklist_traverse;
 	op->show_node = linklist_show_node;
 
-	return op;
-}
-
-struct linklist_operation_extern* linklist_get_operation_extern() {
-	struct linklist_operation_extern *op = (struct linklist_operation_extern*)malloc(sizeof(struct linklist_operation_extern));
-	if (!op)
-		return NULL;
-
 	op->reverse = linklist_reverse;
 	op->save = linklist_save;
 	op->load = linklist_load;
 
 	return op;
 }
+
