@@ -22,6 +22,13 @@ int main(int argc, char** argv) {
 	linklist_op->append_elem(&L,'d');
 	linklist_op->append_elem(&L,'e');
 
+	printf("before clear :\n");
+	linklist_op->traverse(L,linklist_op->show_node);
+	linklist_op->clear(&L);
+	printf("after clear :\n");
+	linklist_op->traverse(L,linklist_op->show_node);
+
+#if 0
 	printf("before reverse :\n");
 	linklist_op->traverse(L,linklist_op->show_node);
 	linklist_op->reverse(&L);
@@ -32,6 +39,7 @@ int main(int argc, char** argv) {
 	linklist_op->reverse(&L);
 	printf("after reverse again:\n");
 	linklist_op->traverse(L,linklist_op->show_node);
+#endif
 
 	linklist_op->destory(&L);
 	linklist_op->destory(&L1);

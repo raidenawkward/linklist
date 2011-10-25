@@ -29,11 +29,19 @@ void linklist_destory(struct LinkList **L) {
 
 Int32 linklist_clear(struct LinkList **L) {
 	if (!*L)
-		return false;
+		return 0;
+
+	Int32 ret = 0;
 	struct LinkList *p = (*L)->next;
+	while(p) {
+		struct LinkList *node = p;
+		p = p->next;
+		free(node);
+		++ret;
+	}
+
 	(*L)->next = NULL;
-	linklist_destory(&p);
-	return true;
+	return ret;
 }
 
 Int32 linklist_length(struct LinkList *L) {

@@ -11,7 +11,7 @@ void linklist_create(struct LinkList **L);
 struct LinkList* linklist_create_node();
 /// destory all nodes include head node
 void linklist_destory(struct LinkList **L);
-/// destory all nodes but head node, false returns if NULL list
+/// clear all list nodes but header node, num of cleared nodes returns
 Int32 linklist_clear(struct LinkList **L);
 /// get link list length without head node
 Int32 linklist_length(struct LinkList *L);
