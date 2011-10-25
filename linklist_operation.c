@@ -9,6 +9,7 @@ struct linklist_operation* linklist_get_operation() {
 		return NULL;
 
 	op->create = linklist_create;
+	op->create_node = linklist_create_node;
 	op->destory = linklist_destory;
 	op->clear = linklist_clear;
 	op->get_length = linklist_length;

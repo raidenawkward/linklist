@@ -7,6 +7,8 @@
 
 /// create link list with head node
 void linklist_create(struct LinkList **L);
+/// create link list node
+struct LinkList* linklist_create_node();
 /// destory all nodes include head node
 void linklist_destory(struct LinkList **L);
 /// destory all nodes but head node, false returns if NULL list

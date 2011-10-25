@@ -10,6 +10,14 @@ void linklist_create(struct LinkList **L) {
 	(*L)->data = 0x00;
 }
 
+struct LinkList* linklist_create_node() {
+	struct LinkList *node = (struct LinkList*)malloc(sizeof(struct LinkList));
+	if (!node)
+		return NULL;
+	node->next = NULL;
+	node->data = 0x00;
+}
+
 void linklist_destory(struct LinkList **L) {
 	if (!(*L))
 		return;

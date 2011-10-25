@@ -12,6 +12,7 @@ struct LinkList {
 struct linklist_operation {
 	/// base operations
 	void (*create)(struct LinkList **L);
+	struct LinkList* (*create_node)(void);
 	void (*destory)(struct LinkList **L);
 	Int32 (*clear)(struct LinkList **L);
 	Int32 (*get_length)(struct LinkList *L);
