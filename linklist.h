@@ -27,9 +27,9 @@ struct linklist_operation {
 	void (*traverse)(struct LinkList *L,Int32 (*f)(struct LinkList*));
 	Int32 (*show_node)(struct LinkList *L);
 	/// external operations
-	Int32 (*reverse)(struct LinkList **L);
-	Int32 (*save)(struct LinkList *L, const char* path, struct linklist_operation *baseop);
-	Int32 (*load)(struct LinkList **L, const char* path, struct linklist_operation *baseop);
+	Boolean (*reverse)(struct LinkList **L);
+	Boolean (*save)(struct LinkList *L, const char* path, struct linklist_operation *baseop);
+	Boolean (*load)(struct LinkList **L, const char* path, struct linklist_operation *baseop);
 };
 
 #endif // _LINKLIST_H

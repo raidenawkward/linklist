@@ -3,10 +3,7 @@
 
 #include "cross_define.h"
 
-#define ERROR -1
-#define SUCCEED 1
-
-typedef char LinkElement;
+typedef UChar LinkElement;
 
 #endif //_LINKLIST_DEFINKE_H
 

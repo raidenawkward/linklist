@@ -39,4 +39,14 @@ void linklist_traverse(struct LinkList *L,Int32 (*f)(struct LinkList*));
 /// print link list node data as char
 Int32 linklist_show_node(struct LinkList *L);
 
+/// external functions
+
+/// reverse all nodes in link list except head node
+Boolean linklist_reverse(struct LinkList **L);
+/// save link list to file
+Boolean linklist_save(struct LinkList *L, const char* path, struct linklist_operation *baseop);
+/// load link list from file
+Boolean linklist_load(struct LinkList **L, const char* path, struct linklist_operation *baseop);
+
+
 #endif //_LINKLIST_BASE_H

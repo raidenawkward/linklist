@@ -1,6 +1,5 @@
 #include "linklist_operation.h"
 #include "linklist_base.h"
-#include "linklist_extern.h"
 
 struct linklist_operation* linklist_get_operation() {
 	struct linklist_operation *op = (struct linklist_operation*)malloc(sizeof(struct linklist_operation));

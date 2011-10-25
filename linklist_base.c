@@ -181,3 +181,64 @@ Boolean linklist_insert_node(struct LinkList **L, struct LinkList *node, Int32 p
 	prev->next = node;
 	return true;
 }
+
+/// external functions
+
+/// method 1
+// returns head of link list after reverse
+static struct LinkList* _list_reverse_prev = NULL;
+static struct LinkList* _list_reverse(struct LinkList **L) {
+	if (!*L)
+		return NULL;
+	struct LinkList *next = (*L)->next;
+	(*L)->next = _list_reverse_prev;
+	_list_reverse_prev = (*L);
+	if (next) {
+		return _list_reverse(&next);
+	}
+	else {
+		_list_reverse_prev = NULL;
+		return (*L);
+	}
+}
+
+Boolean linklist_reverse(struct LinkList **L) {
+	if (!(*L) || !(*L)->next)
+		return false;
+	struct LinkList *list_peeled = (*L)->next;
+	(*L)->next = _list_reverse(&list_peeled);
+	_list_reverse_prev = NULL;
+	return true;
+}
+
+
+/// functions for save and load
+
+static FILE* _linklist_io_fp = NULL;
+
+static Boolean _linklist_save_node(struct LinkList *node) {
+
+}
+
+static struct LinkList* _linklist_load_node(FILE* fp) {
+
+}
+
+Boolean linklist_save(struct LinkList *L, const char* path, struct linklist_operation *baseop) {
+	if (!baseop || !path || !L)
+		return false;
+	if (!baseop->traverse)
+		return false;
+	_linklist_io_fp = fopen(path,"wb");
+	if (!_linklist_io_fp)
+		return false;
+
+	baseop->traverse(L,_linklist_save_node);
+
+	fclose(_linklist_io_fp);
+	return true;
+}
+
+Boolean linklist_load(struct LinkList **L, const char* path, struct linklist_operation *baseop) {
+
+}
