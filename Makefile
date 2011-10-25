@@ -4,7 +4,7 @@ CFLAGS += -g
 SRC := $(shell ls ./*.c)
 OBJS := $(SRC:.c=.o)
 
-TAR_EXEC := a
+TAR_EXEC := b
 TAR_LIB := lib$(NAME).so
 TAR_ALIB := lib$(NAME).a
 

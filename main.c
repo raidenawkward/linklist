@@ -36,5 +36,9 @@ int main(int argc, char** argv) {
 	printf("after reverse again:\n");
 	linklist_op->traverse(L,linklist_op->show_node);
 
+	linklist_op->destory(&L);
+	linklist_op->destory(&L1);
+	free(linklist_op);
+	free(linklist_op_extern);
 	return 0;
 }
