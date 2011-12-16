@@ -1,7 +1,7 @@
 #ifndef _DEFINE_H
 #define _DEFINE_H
 
-typedef enum {
+typedef enum Bool{
 	false = 0,
 	true
 } Boolean;

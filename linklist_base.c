@@ -224,7 +224,7 @@ Boolean linklist_reverse(struct LinkList **L) {
 
 static FILE* _linklist_io_fp = NULL;
 
-static Boolean _linklist_save_node(struct LinkList *node) {
+static Int32 _linklist_save_node(struct LinkList *node) {
 
 }
 
