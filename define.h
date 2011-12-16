@@ -1,5 +1,5 @@
-#ifndef _CROSS_DEFINE_H
-#define _CROSS_DEFINE_H
+#ifndef _DEFINE_H
+#define _DEFINE_H
 
 typedef enum {
 	false = 0,
@@ -12,4 +12,4 @@ typedef unsigned int UInt32;
 typedef int Int32;
 
 
-#endif // _CROSS_DEFINE_H
+#endif // _DEFINE_H
